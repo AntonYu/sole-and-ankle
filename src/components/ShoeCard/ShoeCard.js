@@ -39,8 +39,8 @@ const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfCo
                     {variant === "on-sale" && <SalePrice>{formatPrice(salePrice)}</SalePrice>}
                 </Row>
             </Wrapper>
-            {variant === "on-sale" && <Label variant={variant}>Sale</Label>}
-            {variant === "new-release" && <Label variant={variant}>Just released!</Label>}
+            {variant === "on-sale" && <SaleLabel>Sale</SaleLabel>}
+            {variant === "new-release" && <NewReleaseLabel>Just released!</NewReleaseLabel>}
         </Link>
     );
 };
@@ -51,12 +51,19 @@ const Label = styled.span`
     right: -4px;
     color: ${COLORS.white};
     border-radius: 2px;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: ${14 / 18}rem;
+    font-weight: ${WEIGHTS.bold};
     height: 32px;
     line-height: 32px;
-    padding: 0 7px;
-    background: ${(props) => (props.variant === "on-sale" ? COLORS.primary : COLORS.secondary)};
+    padding: 0 10px;
+`;
+
+const SaleLabel = styled(Label)`
+    background: ${COLORS.primary};
+`;
+
+const NewReleaseLabel = styled(Label)`
+    background: ${COLORS.secondary};
 `;
 
 const Link = styled.a`
